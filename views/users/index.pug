@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Users Management
+
+
+  a.button(href='#users' onclick='createUser()') All Users
+  |&nbsp;&nbsp;
+  a.button(href="#createUser" onclick='createUser()') Create
+  br
+  br
+  div#app
+
+  script(src='/javascripts/users-app.js')

@@ -4,4 +4,16 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    a(href='/') Home
+    |&nbsp;|&nbsp;
+    if session.user.id
+      a(href='/users') Users
+      |&nbsp;|&nbsp;
+      a(href='users/logout') Logout
+    else
+      a(href='/users/login') Login
+      |&nbsp;|&nbsp;
+      a(href='users/register') Register
+      |&nbsp;|&nbsp;
+     
     block content

@@ -6,3 +6,35 @@ body {
 a {
   color: #00B7FF;
 }
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+textarea{
+  font: 24px monospace;
+  padding: .75rem 1.25rem;
+  margin: .5rem 0 1rem;
+  display: inline-block;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+}
+
+input[type="submit"],
+button,
+a.button{
+  padding: .75rem 1.25rem;
+  font: 24px monospace;
+  text-decoration: none;
+  appearance: button;
+  color: #fff;
+  border: 1px solid #0055ee;
+  background: #fff;
+  cursor: pointer;
+  background: #0099ee;
+  border-radius: 2px;
+}
