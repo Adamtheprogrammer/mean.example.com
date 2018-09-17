@@ -8,18 +8,25 @@ var LocalStrategy = require('passport-local').Strategy;
 
 //models
 var Users = require('./models/users')
+if (process.env.NODE_ENV==='production'){
+    var config = require ('../config.prod');
 
+}else{
+    var config = require('./config.dev');
+}
 var config = require('./config.dev');
+
+
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var articlesRouter = require('./routes/articles');
 var apiUsersRouter = require('./routes/api/users');
-
-
+var apiArticlesRouter = require('./routes/api/articles');
+var cmsRouter = require('./routes/cms');
 var app = express();
 
 mongoose.connect(config.mongodb, { useNewUrlParser: true });
@@ -109,7 +116,8 @@ app.use(function(req, res, next){
     }
 
     var subs = [
-        '/public'
+        '/public',
+        '/articles'
     ];
 
     for(var sub of subs){
@@ -140,8 +148,12 @@ app.use(function(req, res, next) {
   });
 
 app.use('/', indexRouter);
+app.use('/cms', cmsRouter);
 app.use('/users', usersRouter);
+app.use('/articles', articlesRouter);
 app.use('/api/users', apiUsersRouter);
+app.use('/api/articles', apiArticlesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
