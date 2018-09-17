@@ -8,13 +8,13 @@ var LocalStrategy = require('passport-local').Strategy;
 
 //models
 var Users = require('./models/users')
+
 if (process.env.NODE_ENV==='production'){
-    var config = require ('../config.prod');
+    var config = require ('../config.pod');
 
 }else{
     var config = require('./config.dev');
 }
-var config = require('./config.dev');
 
 
 var mongoose = require('mongoose');
